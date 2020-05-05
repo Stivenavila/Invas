@@ -5,7 +5,7 @@ project and the libraries it uses, with their respective version.
 
 Install
 ```
-Give the example
+Git clone https://github.com/Stivenavila/Invas_QA.git
 ```
 Bookstores
 ```python
