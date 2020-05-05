@@ -3,6 +3,13 @@
 It indicates step by step the configuration of the folders that will contain the 
 project and the libraries it uses, with their respective version.
 
+### Start the project
+```
+In the terminal we move to the root folder of the project and execute the following command
+```
+```bash
+Python test_001__Testing_Auth.py
+```
 ### Install
 ```
 Git clone https://github.com/Stivenavila/Invas_QA.git
