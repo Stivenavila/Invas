@@ -3,11 +3,11 @@
 It indicates step by step the configuration of the folders that will contain the 
 project and the libraries it uses, with their respective version.
 
-Install
+### Install
 ```
 Git clone https://github.com/Stivenavila/Invas_QA.git
 ```
-Bookstores
+### Bookstores
 ```python
 import unipath v1.1
 import pyunitreport v0.1.4
