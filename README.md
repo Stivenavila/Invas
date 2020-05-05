@@ -16,10 +16,10 @@ Git clone https://github.com/Stivenavila/Invas_QA.git
 ```
 ### Bookstores
 ```python
-import unipath v1.1
-import pyunitreport v0.1.4
-import openpyxl v3.0.3
-import selenium 3.141.0
+import unipath v 1.1
+import pyunitreport v 0.1.4
+import openpyxl v 3.0.3
+import selenium v 3.141.0
 ```
 [ChromeDriver](https://chromedriver.chromium.org/) 81.0.4044.69
 ```
