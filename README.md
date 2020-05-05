@@ -16,15 +16,17 @@ import selenium 3.141.0
 ```
 [ChromeDriver](https://chromedriver.chromium.org/) 81.0.4044.69
 ```
-Folder Hierarchy
-Root Folder 
+```
+## Folder Hierarchy 
+### Root Folder 
+```
 Invas/
 ```
-Driver and data folder
+### Driver and data folder
 ```
 Invas\Driver_Data\
 ```
-Screenshot folder
+### Screenshot folder
 ```
 Invas\Driver_Data\screanshot
 ```
