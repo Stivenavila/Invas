@@ -11,11 +11,11 @@ Give the example
 
 Bookstores
 
-```bash
-unipath v1.1
-pyunitreport v0.1.4
-openpyxl v3.0.3
-selenium 3.141.0
+```python
+import unipath v1.1
+import pyunitreport v0.1.4
+import openpyxl v3.0.3
+import selenium 3.141.0
 ```
 [ChromeDriver](https://chromedriver.chromium.org/) 81.0.4044.69
 
@@ -33,5 +33,4 @@ Invas\Driver_Data\screanshot
 
 
 ## Authors
-
 QA - Frubana
