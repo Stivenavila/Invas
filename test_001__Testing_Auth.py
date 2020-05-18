@@ -1,8 +1,6 @@
 import random
 import unittest
 
-
-from fileinput import filename
 from unipath import Path
 from pyunitreport import HTMLTestRunner
 from time import sleep, strftime, gmtime
@@ -33,8 +31,8 @@ class PythonOrgSearch(unittest.TestCase):
         # obtain URL
         try:
             driver.get(ws['A2'].value)
-        except Exception as e:
-            print("URL: " + ws['A2'].value + "no es valida o no funciona" + str(e))
+        except:
+            print("URL: no es valida o no funciona, verifica el campo A2 del excel")
 
         # obtain user
         try:
@@ -47,17 +45,10 @@ class PythonOrgSearch(unittest.TestCase):
         filename = (strftime("%Y-%m-%d %H%M%S", gmtime()))
         sleep(0.5)
         driver.get_screenshot_as_file("Driver_Data/screanshot/1_login_" + filename + ".png")
-        driver.find_element(By.XPATH, "//button[@class='btn btn-danger pull-right']").send_keys(Keys.ENTER)
-        driver.find_element(By.XPATH, '//input[@class="ui-grid-filter-input ui-grid-filter-input-0"]').click()
-        driver.find_element(By.XPATH, '//input[@class="ui-grid-filter-input ui-grid-filter-input-0"]').send_keys(
-            ws['D2'].value)
-        driver.find_element(By.XPATH,
-                            '//div[@class ="ui-grid-selection-row-header-buttons ui-grid-icon-ok ng-scope"]').click()
-        driver.get_screenshot_as_file("Driver_Data/screanshot/2_select_site_" + filename + ".png")
-        driver.find_element(By.XPATH, '//button[@class="btn btn-danger"]').click()
+        driver.find_element(By.XPATH, "//button[@class='btn btn-danger pull-right']").click()
 
         # test_WMS_Management(self):
-        driver.find_element(By.XPATH, "//a[contains(text(),'* GESTIÓN WMS')]").click()
+        driver.find_element(By.XPATH, '//*[@id="appRf"]/div[2]/div[2]/div/div/ul/li[2]/a').click()
         driver.get_screenshot_as_file("Driver_Data/screanshot/3_Management_wms_" + filename + ".png")
 
         # test_Picking_Management(self):
@@ -97,9 +88,10 @@ class PythonOrgSearch(unittest.TestCase):
                 driver.get_screenshot_as_file("Driver_Data/screanshot/_Order's_" + filename + ".png")
                 valorCant = driver.find_element(By.XPATH, '//*[@id="appRf"]/div[2]/div[2]/div/div/div[10]/input')
                 cant = valorCant.get_attribute('value')
+                print(cant)
                 sleep(0.8)
-                driver.find_element(By.XPATH, '//*[@id="appRf"]/div[2]/div[2]/div/div/div[16]/input').send_keys(cant,
-                                                                                                                Keys.ENTER)
+                driver.find_element(By.XPATH, '//*[@id="appRf"]//div[16]//input[1]').send_keys(cant)
+                driver.find_element(By.XPATH, '//*[@id="appRf"]//div[16]//input[1]').send_keys(Keys.ENTER)
             except:
                 driver.get_screenshot_as_file("Driver_Data/screanshot/00_Error_Alert" + str(a) + filename + ".png")
                 print('Error occurred: ' + 'Cantidad minima error')
@@ -119,7 +111,7 @@ class PythonOrgSearch(unittest.TestCase):
             except IOError:
                 print('Error occurred : ' 'LPNOUT no fue escrito.')
                 driver.close()
-            sleep(2)
+
             # test_popUp_correct
             sleep(0.5)
             popup = driver.find_element(By.XPATH, '//body[@id="appRf"]/div[2]/div[3]/div/div/div/div/b')
