@@ -1,8 +1,8 @@
 import random
 import unittest
-from datetime import datetime, time
-from fileinput import filename
 
+
+from fileinput import filename
 from unipath import Path
 from pyunitreport import HTMLTestRunner
 from time import sleep, strftime, gmtime
@@ -15,26 +15,13 @@ from selenium.webdriver.common.keys import Keys
 class PythonOrgSearch(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome("Driver_Data\chromedriver.exe")
+        self.driver = webdriver.Chrome("Driver_Data/chromedriver.exe")
         self.driver.implicitly_wait(60)
         self.driver.maximize_window()
 
-    # @staticmethod
-    # def highlight(element, effect_time, color, border):
-    #   driver = str(element._parent)
-
-    #  def apply_style(s):
-    #     driver.execute_script("arguments[0].setAttribute('style', arguments[1]);",
-    #                          element, s)
-
-    # original_style = element.get_attribute('style')
-    # apply_style("border: {0}px solid {1};".format(border, color))
-    # time.sleep(effect_time)
-    # apply_style(original_style)
-
     def test_search_in_python_org(self):
 
-        f = Path('Driver_Data\Data.xlsx')
+        f = Path('Driver_Data/Data.xlsx')
         try:
             f
         except FileNotFoundError:
@@ -59,28 +46,28 @@ class PythonOrgSearch(unittest.TestCase):
         # test_Login(self)
         filename = (strftime("%Y-%m-%d %H%M%S", gmtime()))
         sleep(0.5)
-        driver.get_screenshot_as_file("Driver_Data\screanshot/1_login_" + filename + ".png")
-        driver.find_element(By.XPATH, '//button[@class="btn btn-danger pull-right"]').click()
+        driver.get_screenshot_as_file("Driver_Data/screanshot/1_login_" + filename + ".png")
+        driver.find_element(By.XPATH, "//button[@class='btn btn-danger pull-right']").send_keys(Keys.ENTER)
         driver.find_element(By.XPATH, '//input[@class="ui-grid-filter-input ui-grid-filter-input-0"]').click()
         driver.find_element(By.XPATH, '//input[@class="ui-grid-filter-input ui-grid-filter-input-0"]').send_keys(
             ws['D2'].value)
         driver.find_element(By.XPATH,
                             '//div[@class ="ui-grid-selection-row-header-buttons ui-grid-icon-ok ng-scope"]').click()
-        driver.get_screenshot_as_file("Driver_Data\screanshot/2_select_site_" + filename + ".png")
+        driver.get_screenshot_as_file("Driver_Data/screanshot/2_select_site_" + filename + ".png")
         driver.find_element(By.XPATH, '//button[@class="btn btn-danger"]').click()
 
         # test_WMS_Management(self):
         driver.find_element(By.XPATH, "//a[contains(text(),'* GESTIÓN WMS')]").click()
-        driver.get_screenshot_as_file("Driver_Data\screanshot/3_Management_wms_" + filename + ".png")
+        driver.get_screenshot_as_file("Driver_Data/screanshot/3_Management_wms_" + filename + ".png")
 
         # test_Picking_Management(self):
         driver.find_element(By.XPATH, '//*[@id="appRf"]/div[2]/div[2]/div/div/ul/li[13]').click()
-        driver.get_screenshot_as_file("Driver_Data\screanshot/4_Management_piking_" + filename + ".png")
+        driver.get_screenshot_as_file("Driver_Data/screanshot/4_Management_piking_" + filename + ".png")
 
         # test_run_express_continuous_task(self):
         driver.find_element(By.XPATH, '//*[@id="appRf"]/div[2]/div[2]/div/div/ul/li[6]').click()
         # texto = text1.get_attribute('value')
-        driver.get_screenshot_as_file("Driver_Data\screanshot/5_Continuous_task_" + filename + ".png")
+        driver.get_screenshot_as_file("Driver_Data/screanshot/5_Continuous_task_" + filename + ".png")
 
         # alert_error
         try:
@@ -88,7 +75,7 @@ class PythonOrgSearch(unittest.TestCase):
             driver.find_element(By.XPATH, '(//input[@type="text"])[7]').click()
             driver.find_element(By.XPATH, '(//input[@type="text"])[7]').send_keys(ws['F2'].value, Keys.ENTER)
             # self.highlight('(//input[@type="text"])[7]', 3, "red", 5)
-            driver.get_screenshot_as_file("Driver_Data\screanshot/6_Select_task_" + filename + ".png")
+            driver.get_screenshot_as_file("Driver_Data/screanshot/6_Select_task_" + filename + ".png")
             driver.find_element(By.XPATH,
                                 '//div[@class="ui-grid-selection-row-header-buttons ui-grid-icon-ok ng-scope"]').click()
             driver.find_element(By.XPATH, '//center//button[2]').click()
@@ -96,7 +83,7 @@ class PythonOrgSearch(unittest.TestCase):
             popup = driver.find_element(By.XPATH, '//body[@id="appRf"]/div[2]/div[3]/div/div/div/div/b')
             popup2 = popup.text
             sleep(0.5)
-            driver.get_screenshot_as_file("Driver_Data\screanshot/00_Alert_error" + filename + ".png")
+            driver.get_screenshot_as_file("Driver_Data/screanshot/00_Alert_error" + filename + ".png")
             print("Opss!!, " + str(popup2))
             driver.close()
 
@@ -107,14 +94,14 @@ class PythonOrgSearch(unittest.TestCase):
             # test_Order_Piked(self):
             try:
                 sleep(0.5)
-                driver.get_screenshot_as_file("Driver_Data\screanshot/_Order's_" + filename + ".png")
+                driver.get_screenshot_as_file("Driver_Data/screanshot/_Order's_" + filename + ".png")
                 valorCant = driver.find_element(By.XPATH, '//*[@id="appRf"]/div[2]/div[2]/div/div/div[10]/input')
                 cant = valorCant.get_attribute('value')
                 sleep(0.8)
                 driver.find_element(By.XPATH, '//*[@id="appRf"]/div[2]/div[2]/div/div/div[16]/input').send_keys(cant,
                                                                                                                 Keys.ENTER)
             except:
-                driver.get_screenshot_as_file("Driver_Data\screanshot/00_Error_Alert" + str(a) + filename + ".png")
+                driver.get_screenshot_as_file("Driver_Data/screanshot/00_Error_Alert" + str(a) + filename + ".png")
                 print('Error occurred: ' + 'Cantidad minima error')
                 driver.close()
 
@@ -143,10 +130,10 @@ class PythonOrgSearch(unittest.TestCase):
         # test_Order_out(self):
         driver.find_element(By.XPATH, '//*[@id="appRf"]/div[2]/div[2]/div/div/center/button[1]').click()
         sleep(2)
-        driver.get_screenshot_as_file("Driver_Data\screanshot/" + str(b) + "" + filename + ".png")
+        driver.get_screenshot_as_file("Driver_Data/screanshot/" + str(b) + "" + filename + ".png")
         driver.find_element(By.XPATH, '//*[@id="user-header"]/a/span').click()
         driver.find_element(By.XPATH, '//*[@id="user-header"]/ul/li/a/span').click()
-        driver.get_screenshot_as_file("Driver_Data\screanshot/" + str(b) + "Close_" + filename + ".png")
+        driver.get_screenshot_as_file("Driver_Data/creanshot/" + str(b) + "Close_" + filename + ".png")
 
     def tearDown(self):
         self.driver.close()
