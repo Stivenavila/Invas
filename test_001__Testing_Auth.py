@@ -48,7 +48,7 @@ class PythonOrgSearch(unittest.TestCase):
         driver.find_element(By.XPATH, "//button[@class='btn btn-danger pull-right']").click()
 
         # test_WMS_Management(self):
-        driver.find_element(By.XPATH, "//a[contains(text(),'* GESTIÓN WMS')]").click()
+        driver.find_element(By.XPATH, '//*[@id="appRf"]/div[2]/div[2]/div/div/ul/li[2]/a').click()
         driver.get_screenshot_as_file("Driver_Data/screanshot/3_Management_wms_" + filename + ".png")
 
         # test_Picking_Management(self):
